@@ -42,18 +42,20 @@ var mongoStore = MongoStore.create({
 
 app.use(session({ 
     secret: node_session_secret,
-	store: mongoStore, //default is memory store 
+	store: mongoStore,  
 	saveUninitialized: false, 
 	resave: true
 }
 ));
 
-app.use(express.static(__dirname + "/public")); // Ensure this line is before your routes
+// Ensure This Line Is Before Your Routes
+app.use(express.static(__dirname + "/public")); 
 
 app.get('/', (req, res) => {
     res.redirect('/login');
 });
 
+// Create Login Form
 app.get('/login', (req,res) => {
     var html = `
     log in
@@ -68,6 +70,7 @@ app.get('/login', (req,res) => {
     res.send(html);
 });
 
+// Create New User Form
 app.get('/createUser', (req,res) => {
     var html = `
     create user
@@ -80,6 +83,7 @@ app.get('/createUser', (req,res) => {
     res.send(html);
 });
 
+// Throw New User Data Into Console
 app.post('/submitUser', async (req,res) => {
     var username = req.body.username;
     var password = req.body.password;
@@ -131,7 +135,8 @@ app.post('/loggingin', async (req,res) => {
 		req.session.username = username;
 		req.session.cookie.maxAge = expireTime;
 
-		res.redirect('/welcome'); // Redirect to welcome page after successful login
+        // Redirect To Welcome Page After Successful Login
+		res.redirect('/welcome'); 
 		return;
 	}
 	else {
@@ -145,7 +150,7 @@ app.get('/welcome', (req, res) => {
     if (!req.session.authenticated) {
         res.redirect('/login');
     } else {
-        console.log('Session ID:', req.sessionID); // Log the session ID
+        console.log('Session ID:', req.sessionID); // Log The Session ID
         res.send(`
             <h1>Welcome, ${req.session.username}!</h1>
             <a href="/members">Members Area</a><br>
