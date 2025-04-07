@@ -1,0 +1,92 @@
+/* Basic resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh; /* Make sure the body takes full height */
+    background-color: #3AAFA9; /* Background color */
+    font-family: Arial, sans-serif;
+    color: #FEFFFF; /* Default text color - white */
+    line-height: 1.6;
+    opacity: 0; /* Start with invisible body */
+    transition: opacity 1.5s ease-out; /* Smooth fade-in effect, slower */
+}
+
+/* When the page is fully loaded, make body visible */
+body.loaded {
+    opacity: 1; /* Fully visible */
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78; /* Header color */
+}
+
+.header h1 {
+    color: #FEFFFF; /* White text */
+    font-size: 2.5em;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2B7A78; /* Navbar color */
+    padding: 10px 0;
+    text-align: center;
+}
+
+.navbar ul {
+    list-style-type: none;
+}
+
+.navbar ul li {
+    display: inline;
+    margin-right: 20px;
+}
+
+.navbar a {
+    color: #FEFFFF; /* White text */
+    text-decoration: none;
+    font-size: 1.2em;
+    transition: all 0.3s ease; /* Smooth transition for hover */
+}
+
+/* Hover effects with contrasting colors */
+.navbar a:hover {
+    color: #17252A; /* Dark contrasting color for text */
+    background-color: #FEFFFF; /* Light background on hover */
+    padding: 5px 10px; /* Adding padding for a button effect */
+    border-radius: 5px; /* Slight rounding of the corners */
+}
+
+/* Footer */
+.footer {
+    margin-top: auto; /* Pushes the footer to the bottom */
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78; /* Footer color */
+    border-radius: 10px;
+}
+
+.footer p {
+    color: #FEFFFF; /* White text */
+    font-size: 1em;
+}
+
+/* Home page text */
+.home-page-text {
+    color: #FEFFFF; /* Set text color to white */
+    display: flex;
+    align-items: center;  /* Vertically center */
+    justify-content: center;  /* Horizontally center */
+    flex: 1;  /* Take up the available space */
+    text-align: center; /* Centers the text horizontally */
+    font-size: 2rem; /* Adjust font size */
+}
