@@ -25,30 +25,38 @@ class AuthController extends BaseController // Must extend this base class
             'email' => 'required|string|email',
             'password' => 'required|string',
         ]);
-
-        $credentials = $request->only('email', 'password');
-
-        if (!$token = JWTAuth::attempt($credentials)) {
+    
+        $user = User::where('email', $request->email)->first();
+    
+        if (!$user) {
             return response()->json([
                 'status' => 'error',
-                'message' => 'Unauthorized',
+                'message' => 'This email is not registered.',
+            ], 404);
+        }
+    
+        if (!Hash::check($request->password, $user->password)) {
+            return response()->json([
+                'status' => 'error',
+                'message' => 'The password you entered is incorrect.',
             ], 401);
         }
-
-        $user = Auth::user();
+    
+        $token = JWTAuth::attempt($request->only('email', 'password'));
+    
         return response()->json([
             'status' => 'success',
             'user' => $user,
-            'authorisation' => [
+            'authorization' => [
                 'token' => $token,
                 'type' => 'bearer',
             ]
         ]);
     }
+    
     public function register(Request $request)
     {
         try {
-            print_r($request->all());
             $request->validate([
                 'name' => 'required|string|max:255',
                 'email' => 'required|string|email|max:255|unique:users',
@@ -66,8 +74,8 @@ class AuthController extends BaseController // Must extend this base class
             return response()->json([
                 'status' => 'success',
                 'message' => 'User created successfully',
-                'user' => $user,
-                'authorisation' => [
+                'user' => response()->json($user),
+                'authorization' => [
                     'token' => $token,
                     'type' => 'bearer',
                 ]
@@ -123,7 +131,7 @@ class AuthController extends BaseController // Must extend this base class
         return response()->json([
             'status' => 'success',
             'user' => Auth::user(),
-            'authorisation' => [
+            'authorization' => [
                 'token' => Auth::refresh(),
                 'type' => 'bearer',
             ]
