@@ -35,5 +35,5 @@ Route::middleware('auth:api')->group(function () {
 Route::get('/summaries/{summary}', [SummaryController::class, 'show']);
 Route::put('/summaries/{summary}', [SummaryController::class, 'update']);
 Route::delete('/summaries/{summary}', [SummaryController::class, 'destroy']);
-
+Route::get('/admin/summaries', [SummaryController::class, 'adminIndex'])->name('summaries.admin');
 });

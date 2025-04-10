@@ -4,7 +4,7 @@ use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
 use App\Http\Controllers\UserController;
-
+use App\Http\Controllers\Admin\SummaryAdminController;
 
 
 // Welcome.blade.php Route
@@ -29,18 +29,22 @@ Route::get('/about', function () {
 
 Route::middleware('auth')->group(function () {
 
-Route::get('users', [UserController::class, 'index'])->name('users.index');
+    Route::get('users', [UserController::class, 'index'])->name('users.index');
 
-Route::get('users/create', [UserController::class, 'create'])->name('users.create');
-Route::post('users/store', [UserController::class, 'store'])->name('users.store');
+    Route::get('users/create', [UserController::class, 'create'])->name('users.create');
+    Route::post('users/store', [UserController::class, 'store'])->name('users.store');
 
-Route::get('users/show/{id}', [UserController::class, 'show'])->name('users.show');
-Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
-Route::put('users/update', [UserController::class, 'update'])->name('users.update');
-Route::delete('users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
+    Route::get('users/show/{id}', [UserController::class, 'show'])->name('users.show');
+    Route::get('users/edit/{id}', [UserController::class, 'edit'])->name('users.edit');
+    Route::put('users/update', [UserController::class, 'update'])->name('users.update');
+    Route::delete('users/destroy/{id}', [UserController::class, 'destroy'])->name('users.destroy');
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
+    Route::get('/admin/summaries', [App\Http\Controllers\Admin\SummaryAdminController::class, 'index'])->name('admin.summaries.index');
+    Route::get('/dashboard', function () {
+        return view('dashboard'); // or redirect()->route('users.index') if preferred
+    })->name('dashboard')->middleware('auth');
 });
 
-require __DIR__.'/auth.php';
+require __DIR__ . '/auth.php';

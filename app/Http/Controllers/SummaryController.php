@@ -113,5 +113,10 @@ return response()->json($summaries);
     $summaries = Summary::orderBy('created_at', 'desc')->get();
     return response()->json($summaries);
 }
+public function adminIndex()
+{
+    $summaries = Summary::with('user')->orderBy('created_at', 'desc')->get();
+    return view('admin.summaries.index', compact('summaries'));
+}
 
 }

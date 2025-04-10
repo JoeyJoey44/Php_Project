@@ -20,6 +20,7 @@
             <li><a href="{{ route('about.index') }}">About</a></li>
             <li><a href="{{ route('faq.index') }}">FAQ</a></li>
             <li><a href="{{ route('users.index') }}">Admin Page</a></li>
+            <li><a href="{{ route('admin.summaries.index') }}">Lecture Summaries</a></li>
 
         </ul>
     </nav>
