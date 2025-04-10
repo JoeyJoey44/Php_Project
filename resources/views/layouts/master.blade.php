@@ -1,52 +1,80 @@
 <!DOCTYPE html>
-<html lang="{{ str_replace('_', '-', app()->getLocale()) }}">
-
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    
-    <title>@yield('title')</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Home Page</title>
+    <link rel="stylesheet" href="styles.css">
+    <style>
+        
+        .home-page-text {
+            display: flex;
+            align-items: center; 
+            justify-content: center; 
+            flex: 1; 
+            height: 80vh; 
+        }
 
-    <!-- Bootstrap CSS -->
-    
-    
-    <!-- Custom Styles -->
-    <link rel="stylesheet" href="{{ asset('styles.css') }}">
+
+        .home-page-text img {
+            width: 300px; 
+            height: auto;
+            margin-right: 30px; 
+        }
+
+        
+        .description-box {
+            background-color: #1D1D1D; 
+            color: #E0E0E0; 
+            padding: 30px; 
+            border-radius: 15px;
+            font-size: 20px; 
+            width: 300px; 
+            height: 300px; 
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-align: center; 
+            overflow: hidden; 
+        }
+    </style>
 </head>
-
 <body>
-    <!-- Header -->
+
+
     <header class="header">
-        <h1>PHP Project</h1>
+        <h1>NoteZilla</h1>
     </header>
 
-    <!-- Navbar -->
     <nav class="navbar">
         <ul>
             <li><a href="{{ route('welcome.index') }}">Home</a></li>
             <li><a href="{{ route('about.index') }}">About</a></li>
             <li><a href="{{ route('users.index') }}">Admin Page</a></li>
-
         </ul>
     </nav>
+
+  
+
 
     <!-- Main Content -->
     <main class="flex-grow-1">
         @yield('content')
     </main>
 
-    <!-- Footer -->
+
+    
+    
     <footer class="footer">
         <p>© Amal, Dina, James, Joey</p>
     </footer>
 
-    <!-- Optional JS (for Bootstrap alerts, etc.) -->
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js"></script>
     <script>
-        window.onload = function () {
+        window.onload = function() {
             document.body.classList.add('loaded');
         };
     </script>
-</body>
 
+</body>
 </html>

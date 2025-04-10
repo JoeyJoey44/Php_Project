@@ -2,6 +2,8 @@
 @section('title', 'Edit User')
 @section('content')
 <link rel="stylesheet" href="{{ asset('edit.css') }}">
+<link rel="stylesheet" href="{{ asset('index.css') }}"> <!-- Importing the CSS file -->
+    <link rel="stylesheet" href="{{ asset('styles.css') }}"> <!-- Importing the CSS file -->
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Edit User</h2>

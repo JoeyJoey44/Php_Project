@@ -2,6 +2,8 @@
 @section('title', 'Add Users')
 @section('content')
 <link rel="stylesheet" href="{{ asset('create.css') }}">
+<link rel="stylesheet" href="{{ asset('index.css') }}"> <!-- Importing the CSS file -->
+    <link rel="stylesheet" href="{{ asset('styles.css') }}"> <!-- Importing the CSS file -->
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Add New User</h2>
