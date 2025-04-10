@@ -9,23 +9,75 @@
         </div>
     @endif
 
-    <div class="mt-4 flex items-center justify-between">
+    <div class="mt-4 d-flex justify-content-between">
         <form method="POST" action="{{ route('verification.send') }}">
             @csrf
 
             <div>
-                <x-primary-button>
+                <button type="submit" class="btn btn-success">
                     {{ __('Resend Verification Email') }}
-                </x-primary-button>
+                </button>
             </div>
         </form>
 
         <form method="POST" action="{{ route('logout') }}">
             @csrf
 
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
+            <button type="submit" class="btn btn-link text-decoration-none text-muted">
                 {{ __('Log Out') }}
             </button>
         </form>
     </div>
 </x-guest-layout>
+
+<style>
+    .mb-4 {
+        margin-bottom: 1.5rem;
+    }
+
+    .text-sm {
+        font-size: 0.875rem;
+    }
+
+    .text-gray-600 {
+        color: #4B5563;
+    }
+
+    .text-green-600 {
+        color: #16A34A;
+    }
+
+    .text-muted {
+        color: #6C757D;
+    }
+
+    .d-flex {
+        display: flex;
+    }
+
+    .justify-content-between {
+        justify-content: space-between;
+    }
+
+    .btn-success {
+        background-color: #28A745;
+        color: #FFFFFF;
+        border: none;
+        padding: 10px 20px;
+        font-size: 1rem;
+        border-radius: 0.375rem;
+    }
+
+    .btn-link {
+        background-color: transparent;
+        border: none;
+        color: #6C757D;
+        text-decoration: underline;
+        font-size: 1rem;
+        padding: 0;
+    }
+
+    .btn-link:hover {
+        color: #007BFF;
+    }
+</style>
