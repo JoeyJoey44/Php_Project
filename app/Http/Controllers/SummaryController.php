@@ -56,7 +56,12 @@ return response()->json($summaries);
      */
     public function show(Summary $summary)
     {
-        //
+        
+    if ($summary->user_id !== Auth::id()) {
+        return response()->json(['error' => 'Unauthorized'], 403);
+    }
+
+    return response()->json($summary);
     }
 
     /**
@@ -72,7 +77,21 @@ return response()->json($summaries);
      */
     public function update(Request $request, Summary $summary)
     {
-        //
+        if ($summary->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+    
+        $request->validate([
+            'title' => 'string|max:255',
+            'summary_text' => 'string',
+        ]);
+    
+        $summary->update($request->only('title', 'summary_text'));
+    
+        return response()->json([
+            'message' => 'Summary updated successfully!',
+            'summary' => $summary,
+        ]);
     }
 
     /**
@@ -80,6 +99,19 @@ return response()->json($summaries);
      */
     public function destroy(Summary $summary)
     {
-        //
+        if ($summary->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+    
+        $summary->delete();
+    
+        return response()->json(['message' => 'Summary deleted successfully.']);
     }
+    public function all()
+{
+    // Optionally add role check: if (!Auth::user()->is_admin) { ... }
+    $summaries = Summary::orderBy('created_at', 'desc')->get();
+    return response()->json($summaries);
+}
+
 }

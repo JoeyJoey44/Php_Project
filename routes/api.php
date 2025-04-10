@@ -31,4 +31,9 @@ Route::middleware('auth:api')->group(function () {
     Route::apiResource('summaries', SummaryController::class);
     Route::get('/summaries', [SummaryController::class, 'index']);
     Route::post('/summaries', [SummaryController::class, 'store']);
+    Route::get('/summaries/all', [SummaryController::class, 'all']); // optional admin
+Route::get('/summaries/{summary}', [SummaryController::class, 'show']);
+Route::put('/summaries/{summary}', [SummaryController::class, 'update']);
+Route::delete('/summaries/{summary}', [SummaryController::class, 'destroy']);
+
 });
