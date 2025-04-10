@@ -21,25 +21,25 @@ class MediaController extends Controller
 
     public function upload(Request $request)
     {
+        // Validate the uploaded file
         $request->validate([
             'file' => 'required|file|mimes:mp3,mp4,wav,m4a,mov,avi,mkv|max:204800',
         ]);
 
-        // Store file in local disk under uploads/
+        // Store the file under storage/app/uploads
         $path = $request->file('file')->store('uploads', 'local');
-        $fullPath = storage_path('app/private/' . $path); // fixed path — don't use 'private/'
+        $fullPath = storage_path('app/private/' . $path);
 
-        // Ensure file exists
+        // Check if the file actually exists
         if (!file_exists($fullPath)) {
             return response()->json([
-                'error' => 'File not found at: ' . $fullPath,
+                'error' => 'File not found',
                 'stored_path' => $path,
-                'expected_folder' => dirname($fullPath),
-                'disk' => config('filesystems.default'),
+                'expected_location' => $fullPath,
             ], 404);
         }
 
-        // Transcribe via external API
+        // Send file to external transcription API
         $response = Http::timeout(120)->attach(
             'audio',
             file_get_contents($fullPath),
@@ -55,23 +55,27 @@ class MediaController extends Controller
 
         $transcript = $response->json()['text'];
 
-        // Summarize using DeepSeek
+        // Get summary from DeepSeek
         $summary = $this->deepSeek->summarize($transcript);
 
         if (isset($summary['error'])) {
-            return response()->json(['error' => $summary['error']], 500);
+            return response()->json([
+                'error' => 'Summary failed',
+                'details' => $summary['error'],
+            ], 500);
         }
 
+        // Try to get authenticated user (if token is provided)
         $user = null;
         try {
             if ($token = JWTAuth::getToken()) {
                 $user = JWTAuth::authenticate($token);
             }
         } catch (\Exception $e) {
-            Log::warning('JWT auth failed or missing: ' . $e->getMessage());
+            Log::info('Unauthenticated upload (guest or invalid token): ' . $e->getMessage());
         }
 
-        // Save if user is logged in
+        // Save the lecture only if user is authenticated
         $lecture = null;
         if ($user) {
             $lecture = Lectures::create([
@@ -82,13 +86,17 @@ class MediaController extends Controller
                 'video_path' => $path,
             ]);
             Log::info('Lecture saved for user ID ' . $user->id);
+        } else {
+            Log::info('Guest upload completed');
         }
 
+        // Return response
         return response()->json([
             'message' => 'File processed successfully',
-            'lecture' => $lecture,
             'transcript' => $transcript,
             'summary' => $summary,
+            'lecture' => $lecture,
+            'is_guest' => $user === null,
         ]);
     }
 }

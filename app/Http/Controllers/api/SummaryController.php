@@ -1,25 +1,39 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\api;
+use Illuminate\Routing\Controller as BaseController;
 
 use App\Models\Summary;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
+use App\Models\Lectures;
 
-class SummaryController extends Controller
+class SummaryController extends BaseController
 {
     /**
      * Display a listing of the resource.
      */
-    public function index()
-    {
-        
-    $summaries = Summary::where('user_id', Auth::id())
-    ->orderBy('created_at', 'desc')
-    ->get();
 
-return response()->json($summaries);
+    
+    public function index(Request $request)
+    {
+        $user = Auth::user(); // JWT will resolve this user
+    
+        if (!$user) {
+            return response()->json(['message' => 'Unauthorized'], 401);
+        }
+    
+        $lectures = Lectures::with('user')
+            ->where('user_id', $user->id)
+            ->orderBy('created_at', 'desc')
+            ->get();
+    
+        return response()->json([
+            'status' => 'success',
+            'data' => $lectures,
+        ]);
     }
+    
 
     /**
      * Show the form for creating a new resource.
@@ -38,13 +52,13 @@ return response()->json($summaries);
             'title' => 'required|string|max:255',
             'summary_text' => 'required|string',
         ]);
-    
+
         $summary = Summary::create([
             'user_id' => Auth::id(), // links summary to currently logged-in user
             'title' => $request->input('title'),
             'summary_text' => $request->input('summary_text'),
         ]);
-    
+
         return response()->json([
             'message' => 'Summary saved successfully!',
             'summary' => $summary,
@@ -56,12 +70,12 @@ return response()->json($summaries);
      */
     public function show(Summary $summary)
     {
-        
-    if ($summary->user_id !== Auth::id()) {
-        return response()->json(['error' => 'Unauthorized'], 403);
-    }
 
-    return response()->json($summary);
+        if ($summary->user_id !== Auth::id()) {
+            return response()->json(['error' => 'Unauthorized'], 403);
+        }
+
+        return response()->json($summary);
     }
 
     /**
@@ -80,14 +94,14 @@ return response()->json($summaries);
         if ($summary->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
-    
+
         $request->validate([
             'title' => 'string|max:255',
             'summary_text' => 'string',
         ]);
-    
+
         $summary->update($request->only('title', 'summary_text'));
-    
+
         return response()->json([
             'message' => 'Summary updated successfully!',
             'summary' => $summary,
@@ -102,21 +116,20 @@ return response()->json($summaries);
         if ($summary->user_id !== Auth::id()) {
             return response()->json(['error' => 'Unauthorized'], 403);
         }
-    
+
         $summary->delete();
-    
+
         return response()->json(['message' => 'Summary deleted successfully.']);
     }
     public function all()
-{
-    // Optionally add role check: if (!Auth::user()->is_admin) { ... }
-    $summaries = Summary::orderBy('created_at', 'desc')->get();
-    return response()->json($summaries);
-}
-public function adminIndex()
-{
-    $summaries = Summary::with('user')->orderBy('created_at', 'desc')->get();
-    return view('admin.summaries.index', compact('summaries'));
-}
-
+    {
+        // Optionally add role check: if (!Auth::user()->is_admin) { ... }
+        $summaries = Summary::orderBy('created_at', 'desc')->get();
+        return response()->json($summaries);
+    }
+    public function adminIndex()
+    {
+        $summaries = Summary::with('user')->orderBy('created_at', 'desc')->get();
+        return view('admin.summaries.index', compact('summaries'));
+    }
 }
