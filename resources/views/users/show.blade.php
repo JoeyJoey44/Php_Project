@@ -1,6 +1,9 @@
 @extends('layouts.master')
 @section('title', 'Show User')
 @section('content')
+<link rel="stylesheet" href="{{ asset('show.css') }}">
+<link rel="stylesheet" href="{{ asset('index.css') }}"> <!-- Importing the CSS file -->
+    <link rel="stylesheet" href="{{ asset('styles.css') }}"> <!-- Importing the CSS file -->
 
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">

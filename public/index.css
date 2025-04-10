@@ -1,0 +1,174 @@
+/* Basic resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #3AAFA9; /* Matching background color */
+    font-family: Arial, sans-serif;
+    color: #FEFFFF; /* Light text */
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78; /* Matching header background */
+    width: 100%;
+}
+
+.header h1 {
+    color: #FEFFFF; /* White text */
+    font-size: 2.5em;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2B7A78; /* Matching navbar background */
+    padding: 15px 0;
+    width: 100%;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    color: #FEFFFF; /* White text */
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Hover effects */
+.navbar a:hover {
+    color: #17252A; /* Dark text on hover */
+    background-color: #FEFFFF; /* White background on hover */
+}
+
+/* Home page text */
+.home-page-text {
+    color: #FEFFFF; /* White text */
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    font-size: 2rem;
+    padding: 40px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78; /* Matching footer background */
+    width: 100%;
+}
+
+.footer p {
+    color: #FEFFFF; /* White text */
+    font-size: 1em;
+}
+
+/* Table & Container adjustments for full width */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Table */
+.table {
+    width: 100%;
+}
+
+/* New style for table header (item names) */
+.table th {
+    background-color: #FEFFFF; /* White background */
+    color: #17252A; /* Dark text */
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+}
+
+/* New style for table data (item names) */
+.table td {
+    background-color: #FEFFFF; /* White background */
+    color: #17252A; /* Dark text */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    text-align: center;
+}
+
+/* Remove table borders */
+.table th, .table td {
+    border: none;
+}
+
+.table thead {
+    background-color: #FEFFFF;
+}
+
+/* Button styling */
+.btn {
+    background-color: #2B7A78; /* Matching button background */
+    color: #17252A; /* Dark text */
+    border: none;
+    border-radius: 25px;
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Button hover effect */
+.btn:hover {
+    background-color: #FEFFFF; /* White background on hover */
+    color: #17252A; /* Dark text */
+}
+
+/* Specific button sizes */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+/* Button spacing */
+.d-flex .btn {
+    margin-right: 10px;
+}

@@ -1,13 +1,13 @@
 @extends('layouts.master')
 @section('title', 'Add Users')
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('create.css') }}">
+<link rel="stylesheet" href="{{ asset('index.css') }}"> <!-- Importing the CSS file -->
+    <link rel="stylesheet" href="{{ asset('styles.css') }}"> <!-- Importing the CSS file -->
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Add New User</h2>
-        <a href="{{ route('users.index') }}" class="btn btn-secondary">
-            <i class="bi bi-arrow-left"></i> Back
-        </a>
+       
     </div>
 
     @if ($errors->any())
@@ -76,7 +76,7 @@
             
             <!-- Submit Button -->
             <div class="col-12">
-                <button type="submit" class="btn btn-secondary w-100">
+                <button type="submit" class="btn btn-primary w-100">
                     <i class="bi bi-save"></i> Create User Account
                 </button>
             </div>

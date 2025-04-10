@@ -1,31 +1,143 @@
 <x-guest-layout>
-    <div class="mb-4 text-sm text-gray-600 dark:text-gray-400">
-        {{ __('Thanks for signing up! Before getting started, could you verify your email address by clicking on the link we just emailed to you? If you didn\'t receive the email, we will gladly send you another.') }}
+    <div class="mb-4 text-sm text-white">
+        {{ __('This is a secure area of the application. Please confirm your password before continuing.') }}
     </div>
 
-    @if (session('status') == 'verification-link-sent')
-        <div class="mb-4 font-medium text-sm text-green-600 dark:text-green-400">
-            {{ __('A new verification link has been sent to the email address you provided during registration.') }}
-        </div>
-    @endif
+    <form method="POST" action="{{ route('password.confirm') }}" class="login-form">
+        @csrf
 
-    <div class="mt-4 flex items-center justify-between">
-        <form method="POST" action="{{ route('verification.send') }}">
-            @csrf
-
-            <div>
-                <x-primary-button>
-                    {{ __('Resend Verification Email') }}
-                </x-primary-button>
+        <!-- Password -->
+        <div class="form-group">
+            <label for="password" class="form-label">Password</label>
+            <div class="input-group mb-3">
+                <span class="input-group-text"><i class="bi bi-lock-fill"></i></span>
+                <x-text-input id="password" class="form-control" type="password" name="password" required autocomplete="current-password" />
             </div>
-        </form>
+            <x-input-error :messages="$errors->get('password')" class="error-message" />
+        </div>
 
-        <form method="POST" action="{{ route('logout') }}">
-            @csrf
-
-            <button type="submit" class="underline text-sm text-gray-600 dark:text-gray-400 hover:text-gray-900 dark:hover:text-gray-100 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500 dark:focus:ring-offset-gray-800">
-                {{ __('Log Out') }}
-            </button>
-        </form>
-    </div>
+        <div class="d-flex justify-content-end mt-4">
+            <x-primary-button class="btn btn-primary">
+                {{ __('Confirm') }}
+            </x-primary-button>
+        </div>
+    </form>
 </x-guest-layout>
+
+<style>
+  /* Reset default styles */
+  * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+  }
+
+  body {
+      font-family: 'Arial', sans-serif;
+      background-color: #3AAFA9;
+      color: #FEFFFF;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      flex-direction: column;
+      margin: 0;
+  }
+
+  /* Form Styling */
+  .login-form {
+      width: 100%;
+      max-width: 500px;
+      background-color: #2B7A78;
+      padding: 30px;
+      border-radius: 8px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: all 0.3s ease-in-out;
+  }
+
+  .login-form:hover {
+      transform: scale(1.02);
+  }
+
+  .form-group {
+      margin-bottom: 1.5rem;
+  }
+
+  .form-label {
+      font-weight: bold;
+      color: #FEFFFF;
+      font-size: 1.1rem;
+  }
+
+  .input-group {
+      width: 100%;
+  }
+
+  .input-group-text {
+      background-color: #17252A;
+      color: #FEFFFF;
+      padding: 10px;
+      border-radius: 0.375rem 0 0 0.375rem;
+  }
+
+  .form-control {
+      background-color: #FFFFFF;
+      color: #000000;
+      border-radius: 0 0.375rem 0.375rem 0;
+      border: 1px solid #ccc;
+      padding: 10px;
+      font-size: 1rem;
+  }
+
+  .form-control:focus {
+      border-color: #2B7A78;
+      outline: none;
+      box-shadow: 0 0 5px rgba(43, 122, 120, 0.5);
+  }
+
+  .form-check-label {
+      color: #FEFFFF;
+  }
+
+  .btn-primary {
+      background-color: #2B7A78;
+      color: #FEFFFF;
+      border: none;
+      padding: 10px;
+      font-size: 1.1rem;
+      border-radius: 8px;
+      transition: background-color 0.3s ease;
+  }
+
+  .btn-primary:hover {
+      background-color: #17252A;
+      color: #FEFFFF;
+  }
+
+  .error-message {
+      color: #FF6B6B;
+      font-size: 0.875rem;
+      margin-top: 0.5rem;
+      font-style: italic;
+  }
+
+  .d-flex {
+      display: flex;
+  }
+
+  .justify-content-end {
+      justify-content: flex-end;
+  }
+
+  .mt-4 {
+      margin-top: 1.5rem;
+  }
+
+  .mb-3 {
+      margin-bottom: 1rem;
+  }
+
+  .input-group-text i {
+      font-size: 1.2rem;
+  }
+</style>

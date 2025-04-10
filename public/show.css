@@ -1,0 +1,114 @@
+/* General container and layout styling */
+.container {
+    max-width: 900px;
+    margin: 0 auto;
+    padding: 20px;
+}
+
+/* Title and Back Button Styling */
+.d-flex {
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+h2 {
+    font-size: 24px;
+    color: #17252A;
+}
+
+.btn-secondary {
+    background-color: #2B7A78;
+    color: #FEFFFF;
+    padding: 8px 16px;
+    font-size: 16px;
+    border: none;
+    border-radius: 25px;
+    text-decoration: none;
+    transition: background-color 0.3s ease;
+}
+
+.btn-secondary:hover {
+    background-color: #FEFFFF;
+    color: #2B7A78;
+}
+
+/* Input Group Styles for the Form */
+.input-group {
+    display: flex;
+    align-items: center;
+    border-radius: 8px;
+    margin-bottom: 15px;
+}
+
+.input-group-text {
+    background-color: transparent;
+    border: none;
+    color: #17252A;
+    padding: 10px 15px;
+    border-radius: 8px 0 0 8px;
+}
+
+/* Form Control for Input Fields */
+.form-control {
+    background-color: #FEFFFF;
+    border: 1px solid #ccc;
+    padding: 10px 15px;
+    border-radius: 0 8px 8px 0;
+    font-size: 16px;
+    width: 100%;
+}
+
+/* Form Control Readonly Styling */
+.form-control[readonly] {
+    background-color: #f8f9fa;
+    color: #495057;
+    border-color: #ced4da;
+}
+
+/* Label Styling */
+.form-label {
+    font-weight: bold;
+    color: #17252A;
+    margin-bottom: 8px;
+    display: block;
+    font-size: 1rem;
+}
+
+.text-muted {
+    color: #6c757d;
+}
+
+/* Responsive grid setup */
+.row.g-3 {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+/* Column Width */
+.col-md-6 {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.col-12 {
+    display: flex;
+    justify-content: center;
+}
+
+/* Media Queries for Mobile Optimization */
+@media (max-width: 768px) {
+    .container {
+        padding: 15px;
+    }
+
+    .col-md-6 {
+        width: 100%;
+    }
+
+    .btn-secondary {
+        width: 100%;
+    }
+}
