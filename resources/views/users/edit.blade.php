@@ -1,7 +1,7 @@
 @extends('layouts.master')
 @section('title', 'Edit User')
 @section('content')
-
+<link rel="stylesheet" href="{{ asset('edit.css') }}">
 <div class="container mt-4">
     <div class="d-flex justify-content-between align-items-center mb-4">
         <h2>Edit User</h2>
@@ -27,7 +27,6 @@
         @method('PUT')
         
         <div class="row g-3">
-            <!-- Name Field -->
             <div class="col-md-6">
                 <label for="name" class="form-label">Full Name</label>
                 <div class="input-group mb-3">
@@ -39,7 +38,6 @@
                 </div>
             </div>
             
-            <!-- Email Field -->
             <div class="col-md-6">
                 <label for="email" class="form-label">Email Address</label>
                 <div class="input-group mb-3">
@@ -51,8 +49,6 @@
                 </div>
             </div>
             
-            
-            <!-- Submit Button -->
             <div class="col-12">
                 <button type="submit" class="btn btn-secondary w-100">
                     <i class="bi bi-save"></i> Update User

@@ -1,0 +1,175 @@
+/* Basic resets */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+/* Body setup */
+body {
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+    background-color: #3AAFA9;
+    font-family: Arial, sans-serif;
+    color: #FEFFFF;
+    line-height: 1.6;
+    opacity: 0;
+    transition: opacity 0.5s ease;
+}
+
+body.loaded {
+    opacity: 1;
+}
+
+/* Header */
+.header {
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78;
+    width: 100%;
+}
+
+.header h1 {
+    color: #FEFFFF;
+    font-size: 2.5em;
+}
+
+/* Navbar */
+.navbar {
+    background-color: #2B7A78;
+    padding: 15px 0;
+    width: 100%;
+}
+
+.navbar ul {
+    display: flex;
+    justify-content: center; /* Center items horizontally */
+    flex-wrap: wrap;
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    gap: 30px;
+}
+
+.navbar li {
+    display: inline;
+}
+
+.navbar a {
+    color: #FEFFFF;
+    text-decoration: none;
+    font-size: 1.2em;
+    padding: 5px 10px;
+    transition: all 0.3s ease;
+    border-radius: 5px;
+}
+
+/* Hover effects */
+.navbar a:hover {
+    color: #17252A;
+    background-color: #FEFFFF;
+}
+
+/* Home page text */
+.home-page-text {
+    color: #FEFFFF;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex: 1;
+    text-align: center;
+    font-size: 2rem;
+    padding: 40px;
+}
+
+/* Footer */
+.footer {
+    text-align: center;
+    padding: 20px;
+    background-color: #2B7A78;
+    border-radius: 0;
+    width: 100%;
+}
+
+.footer p {
+    color: #FEFFFF;
+    font-size: 1em;
+}
+
+/* Table & Container adjustments for full width */
+.container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 20px;
+}
+
+.table-responsive {
+    width: 100%;
+    overflow-x: auto;
+}
+
+/* Optional: Ensure table takes full width if possible */
+.table {
+    width: 100%;
+}
+
+/* New style for item names (table header or item names) */
+.table th {
+    background-color: #FEFFFF; /* White background for header */
+    color: #17252A; /* Dark text color */
+    font-weight: bold;
+    padding: 10px;
+    border-radius: 10px; /* Rounded corners */
+    text-align: center;
+}
+
+/* New style for item data (users) to be rounded and white */
+.table td {
+    background-color: #FEFFFF; /* White background for table cells */
+    color: #17252A; /* Dark text color */
+    border-radius: 10px; /* Rounded corners */
+    padding: 10px;
+    text-align: center;
+}
+
+/* New style for the items bar as one solid bar */
+.table th, .table td {
+    border: none; /* Remove borders between cells */
+}
+
+.table thead {
+    background-color: #FEFFFF;
+}
+
+/* Button styling for create/edit actions */
+.btn {
+    background-color: #2B7A78; /* Soft blue background */
+    color: #17252A; /* Dark text */
+    border: none; /* Remove border */
+    border-radius: 25px; /* Rounded corners */
+    padding: 8px 16px;
+    text-decoration: none;
+    display: inline-block;
+    text-align: center;
+    font-size: 1rem;
+    transition: all 0.3s ease;
+}
+
+/* Button hover effects */
+.btn:hover {
+    background-color: #FEFFFF; /* White background when hovered */
+    color: #17252A; /* Dark text */
+}
+
+/* Specific button sizes */
+.btn-sm {
+    padding: 5px 10px;
+    font-size: 0.875rem;
+}
+
+/* Button spacing */
+.d-flex .btn {
+    margin-right: 10px; /* Space between buttons */
+}
