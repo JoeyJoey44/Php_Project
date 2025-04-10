@@ -16,6 +16,11 @@
     </head>
     <body class="">
         <div class="">
+        <div>
+                 <a href="/">
+
+                 </a>
+             </div>
 
             <div class="">
                 {{ $slot }}
