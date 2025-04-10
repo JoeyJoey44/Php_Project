@@ -24,6 +24,11 @@ class User extends Authenticatable implements JWTSubject
         'password'
     ];
 
+    protected $hidden = [
+        'password',
+        'remember_token',
+    ];
+    
     /**
      * Get the attributes that should be cast.
      *
@@ -55,4 +60,8 @@ class User extends Authenticatable implements JWTSubject
     {
         return [];
     }
+    public function summaries()
+{
+    return $this->hasMany(Summary::class);
+}
 }
