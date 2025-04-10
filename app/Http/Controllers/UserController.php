@@ -4,6 +4,9 @@ namespace App\Http\Controllers;
 
 use App\Models\User;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Hash;
+
+
 
 class UserController extends Controller
 {
@@ -12,7 +15,16 @@ class UserController extends Controller
      */
     public function index()
     {
-        return User::all();
+        $data = User::latest()->paginate(5); // or User::paginate(10) for pagination
+        return view("users.index", ['users' => $data])->with(request()->input('page'));
+    }
+
+    /**
+     * Show the form for creating a new user.
+     */
+    public function create()
+    {
+        return view('users.create');
     }
 
     /**
@@ -26,50 +38,68 @@ class UserController extends Controller
             'password' => 'required|string|min:8|confirmed',
         ]);
 
-        $user = User::create([
+        User::create([
             'name' => $validated['name'],
             'email' => $validated['email'],
-            'password' => bcrypt($validated['password']),
+            'password' => Hash::make($validated['password']), // Always hash passwords
         ]);
 
-        return response()->json($user, 201);
+        return redirect()->route('users.index')->with('success', 'User created successfully!');
     }
 
     /**
      * Display the specified user.
      */
-    public function show(User $user)
+    public function show($id)
     {
-        return $user;
+        return view('users.show', [
+            'users' => User::findOrFail($id)
+        ]);
     }
 
     /**
+     * Show the form for editing the specified user.
+     */
+    public function edit($id)
+    {
+        return view('users.edit', [
+            'users' => User::findOrFail($id)
+        ]);
+    }
+    /**
      * Update the specified user.
      */
-    public function update(Request $request, User $user)
+    public function update(Request $request, User $users)
     {
-        $validated = $request->validate([
-            'name' => 'sometimes|string|max:255',
-            'email' => 'sometimes|string|email|max:255|unique:users,email,'.$user->id,
-            'password' => 'sometimes|string|min:8|confirmed',
+        // Validation for required fields (and using some regex to validate our numeric value)
+        $request->validate([
+            'id' => 'required',
+            'name' => 'required',
+            'email' => 'required',
         ]);
-
-        if (isset($validated['password'])) {
-            $validated['password'] = bcrypt($validated['password']);
-        }
-
-        $user->update($validated);
-
-        return $user;
+        $users = User::find($request->get('id'));
+        // this can be used for debugging
+        // it displays in the console
+        // Getting values from the blade template form
+        $users->Name = $request->get('name');
+        $users->Email = $request->get('email');
+        $users->save();
+        return redirect()->route('users.index')
+            ->with('success', 'User updated successfully');
     }
 
     /**
      * Remove the specified user.
      */
-    public function destroy(User $user)
+    public function destroy($id)
     {
-        $user->delete();
-        return response()->noContent();
-    }
+        // find the student
+        $users = User::find($id);
+        // delete the student
 
+        $users->delete();
+        // redirect to students list page
+        return redirect()->route('users.index')
+            ->with('success', 'user deleted successfully');
+    }
 }

@@ -14,8 +14,6 @@ body {
     font-family: Arial, sans-serif;
     color: #FEFFFF; /* Default text color - white */
     line-height: 1.6;
-    opacity: 0; /* Start with invisible body */
-    transition: opacity 1.5s ease-out; /* Smooth fade-in effect, slower */
 }
 
 /* When the page is fully loaded, make body visible */
@@ -90,3 +88,5 @@ body.loaded {
     text-align: center; /* Centers the text horizontally */
     font-size: 2rem; /* Adjust font size */
 }
+
+
