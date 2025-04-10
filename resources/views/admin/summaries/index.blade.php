@@ -1,32 +1,41 @@
-@extends('layouts.app')
-
+@extends('layouts.master')
+@section('title', 'Show User')
 @section('content')
-    <div class="dashboard-container">
-        <h2 class="dashboard-header">All Lecture Summaries</h2>
+<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet">
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js"></script>
+
+ 
+
+    <div class="dashboard-container container">
+        <h2 class="dashboard-header text-white">All Lecture Summaries</h2>
 
         @if ($summaries->isEmpty())
             <p>No summaries found.</p>
         @else
-            <table class="summary-table">
-                <thead>
+        <table class="table  align-middle">
+            <thead class="thead-dark">
+                <tr>
+                    <th>User</th>
+                    <th>Date</th>
+                    <th>Actions</th> <!-- New column for the view icon -->
+                </tr>
+            </thead>
+            <tbody>
+                @foreach ($summaries as $summary)
                     <tr>
-                        <th>User</th>
-                        <th>Title</th>
-                        <th>Summary</th>
-                        <th>Date</th>
+                        <td>{{ $summary->user->name ?? 'Unknown' }}</td>
+                        <td>{{ $summary->created_at->format('Y-m-d H:i') }}</td>
+                        <td>
+                            <a href="{{ route('admin.summaries.show', $summary->id) }}" class="btn btn-outline-primary btn-sm" title="View">
+                                View <!-- Bootstrap Icons eye -->
+                            </a>
+                        </td>
                     </tr>
-                </thead>
-                <tbody>
-                    @foreach ($summaries as $summary)
-                        <tr>
-                            <td>{{ $summary->user->name ?? 'Unknown' }}</td>
-                            <td>{{ $summary->title }}</td>
-                            <td>{{ \Illuminate\Support\Str::limit($summary->summary_text, 80) }}</td>
-                            <td>{{ $summary->created_at->format('Y-m-d H:i') }}</td>
-                        </tr>
-                    @endforeach
-                </tbody>
-            </table>
+                @endforeach
+            </tbody>
+        </table>
+        
         @endif
     </div>
+
 @endsection

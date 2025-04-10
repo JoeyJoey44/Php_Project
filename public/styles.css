@@ -10,7 +10,7 @@ body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Make sure the body takes full height */
-    background-color: #121212; /* Dark background */
+    background-color: #121212 !important; /* Dark background */
     font-family: Arial, sans-serif;
     color: #E0E0E0; /* Lighter text for contrast */
     line-height: 1.6;

@@ -41,7 +41,12 @@ Route::middleware('auth')->group(function () {
     Route::get('/profile', [ProfileController::class, 'edit'])->name('profile.edit');
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
-    Route::get('/admin/summaries', [App\Http\Controllers\Admin\SummaryAdminController::class, 'index'])->name('admin.summaries.index');
+    Route::get('/summaries', [SummaryAdminController::class, 'index'])->name('admin.summaries.index');
+    Route::get('/summaries/{id}', [SummaryAdminController::class, 'show'])->name('admin.summaries.show');
+    Route::get('/stream-video/{filename}', [SummaryAdminController::class, 'streamVideo'])
+        ->where('filename', '.*') // allow dots in the filename
+        ->name('admin.video.stream');
+        
     Route::get('/dashboard', function () {
         return view('dashboard'); // or redirect()->route('users.index') if preferred
     })->name('dashboard')->middleware('auth');
