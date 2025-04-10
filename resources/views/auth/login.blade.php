@@ -58,13 +58,14 @@
          Register
         </a>
     </div>
+
 </x-guest-layout>
 
 <style>
     body {
         font-family: Arial, sans-serif;
-        background-color: #3AAFA9;
-        color: #FEFFFF;
+        background-color: #121212; /* Dark background */
+        color: #E0E0E0; /* Light text for readability */
         min-height: 100vh;
         display: flex;
         justify-content: center;
@@ -76,9 +77,10 @@
     .login-form {
         width: 100%;
         max-width: 400px;
-        background-color: #2B7A78;
+        background-color: #2B7A78; /* Dark teal background */
         padding: 30px;
         border-radius: 8px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2); /* Subtle shadow for better visibility */
     }
 
     .form-label {
@@ -86,18 +88,18 @@
     }
 
     .input-group-text {
-        background-color: #17252A;
-        color: #FEFFFF;
+        background-color: #17252A; /* Dark background for icons */
+        color: #FEFFFF; /* Light text for icon */
     }
 
     .form-control {
-        background-color: #FFFFFF;
-        color: #000000;
+        background-color: #1D1D1D; /* Dark background for input */
+        color: #E0E0E0; /* Light text */
         border-radius: 0.375rem;
     }
 
     .form-control:focus {
-        border-color: #2B7A78;
+        border-color: #2B7A78; /* Highlight color on focus */
         outline: none;
     }
 

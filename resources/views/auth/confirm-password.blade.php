@@ -33,7 +33,7 @@
     }
 
     body {
-        font-family: Arial, sans-serif;
+        font-family: 'Arial', sans-serif;
         background-color: #3AAFA9;
         color: #FEFFFF;
         min-height: 100vh;
@@ -50,8 +50,13 @@
         max-width: 500px;
         background-color: #2B7A78;
         padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        border-radius: 10px;
+        box-shadow: 0 6px 12px rgba(0, 0, 0, 0.2);
+        transition: transform 0.3s ease-in-out;
+    }
+
+    .login-form:hover {
+        transform: translateY(-5px);
     }
 
     .form-group {
@@ -61,6 +66,8 @@
     .form-label {
         font-weight: bold;
         color: #FEFFFF;
+        font-size: 1.1rem;
+        margin-bottom: 0.5rem;
     }
 
     .input-group {
@@ -70,20 +77,24 @@
     .input-group-text {
         background-color: #17252A;
         color: #FEFFFF;
+        border-radius: 0.375rem 0 0 0.375rem;
+        padding: 10px;
     }
 
     .form-control {
-        background-color: #FFFFFF; /* Set background color to white */
-        color: #000000; /* Set text color to black */
-        border-radius: 0.375rem;
+        background-color: #FFFFFF;
+        color: #000000;
+        border-radius: 0 0.375rem 0.375rem 0;
         border: 1px solid #ccc;
         padding: 10px;
         font-size: 1rem;
+        transition: border-color 0.3s ease, box-shadow 0.3s ease;
     }
 
     .form-control:focus {
         border-color: #2B7A78;
         outline: none;
+        box-shadow: 0 0 5px rgba(43, 122, 120, 0.5);
     }
 
     .form-check-label {
@@ -94,20 +105,23 @@
         background-color: #2B7A78;
         color: #FEFFFF;
         border: none;
-        padding: 10px;
+        padding: 10px 20px;
         font-size: 1.1rem;
         border-radius: 8px;
+        transition: background-color 0.3s ease, transform 0.3s ease;
     }
 
     .btn-primary:hover {
         background-color: #17252A;
         color: #FEFFFF;
+        transform: translateY(-2px);
     }
 
     .error-message {
         color: #FF6B6B;
         font-size: 0.875rem;
         margin-top: 0.5rem;
+        font-style: italic;
     }
 
     .d-flex {

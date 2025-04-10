@@ -45,84 +45,89 @@
 
 <style>
     /* General Styling */
-    .password-reset-form {
-        width: 100%;
-        max-width: 500px;
-        background-color: #2B7A78;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+.password-reset-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #2B7A78;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
-    .form-label {
-        font-weight: bold;
-        color: #FEFFFF;
-    }
+.form-label {
+    font-weight: bold;
+    color: #FEFFFF;
+}
 
-    .input-group {
-        width: 100%;
-    }
+.input-group {
+    width: 100%;
+}
 
-    .input-group-text {
-        background-color: #17252A;
-        color: #FEFFFF;
-    }
+.input-group-text {
+    background-color: #17252A;
+    color: #FEFFFF;
+}
 
-    .form-control {
-        background-color: #FFFFFF;
-        color: #000000;
-        border-radius: 0.375rem;
-        border: 1px solid #ccc;
-        padding: 10px;
-        font-size: 1rem;
-    }
+.form-control {
+    background-color: #FFFFFF;
+    color: #000000;
+    border-radius: 0.375rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+}
 
-    .form-control:focus {
-        border-color: #2B7A78;
-        outline: none;
-    }
+.form-control:focus {
+    border-color: #2B7A78;
+    outline: none;
+}
 
-    .btn-primary {
-        background-color: #2B7A78;
-        color: #FEFFFF;
-        border: none;
-        padding: 10px;
-        font-size: 1.1rem;
-        border-radius: 8px;
-    }
+.form-check-label {
+    color: #FEFFFF;
+}
 
-    .btn-primary:hover {
-        background-color: #17252A;
-        color: #FEFFFF;
-    }
+.btn-primary {
+    background-color: #2B7A78;
+    color: #FEFFFF;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
 
-    .error-message {
-        color: #FF6B6B;
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-    }
+.btn-primary:hover {
+    background-color: #17252A;
+    color: #FEFFFF;
+}
 
-    .d-flex {
-        display: flex;
-    }
+.error-message {
+    color: #FF6B6B;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
 
-    .justify-content-end {
-        justify-content: flex-end;
-    }
+.d-flex {
+    display: flex;
+}
 
-    .mt-4 {
-        margin-top: 1.5rem;
-    }
+.justify-content-end {
+    justify-content: flex-end;
+}
 
-    .mb-3 {
-        margin-bottom: 1rem;
-    }
+.mt-4 {
+    margin-top: 1.5rem;
+}
 
-    .input-group-text i {
-        font-size: 1.2rem;
-    }
+.mb-3 {
+    margin-bottom: 1rem;
+}
+
+.input-group-text i {
+    font-size: 1.2rem;
+}
+
 </style>

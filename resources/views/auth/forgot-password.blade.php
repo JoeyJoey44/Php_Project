@@ -28,108 +28,110 @@
 </x-guest-layout>
 
 <style>
+
     /* Reset default styles */
-    * {
-        margin: 0;
-        padding: 0;
-        box-sizing: border-box;
-    }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-    body {
-        font-family: Arial, sans-serif;
-        background-color: #3AAFA9;
-        color: #FEFFFF;
-        min-height: 100vh;
-        display: flex;
-        justify-content: center;
-        align-items: center;
-        flex-direction: column;
-        margin: 0;
-    }
+body {
+    font-family: Arial, sans-serif;
+    background-color: #3AAFA9;
+    color: #FEFFFF;
+    min-height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    margin: 0;
+}
 
-    /* Form Styling */
-    .login-form {
-        width: 100%;
-        max-width: 500px;
-        background-color: #2B7A78;
-        padding: 30px;
-        border-radius: 8px;
-        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-    }
+/* Form Styling */
+.login-form {
+    width: 100%;
+    max-width: 500px;
+    background-color: #2B7A78;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+}
 
-    .form-group {
-        margin-bottom: 1.5rem;
-    }
+.form-group {
+    margin-bottom: 1.5rem;
+}
 
-    .form-label {
-        font-weight: bold;
-        color: #FEFFFF;
-    }
+.form-label {
+    font-weight: bold;
+    color: #FEFFFF;
+}
 
-    .input-group {
-        width: 100%;
-    }
+.input-group {
+    width: 100%;
+}
 
-    .input-group-text {
-        background-color: #17252A;
-        color: #FEFFFF;
-    }
+.input-group-text {
+    background-color: #17252A;
+    color: #FEFFFF;
+}
 
-    .form-control {
-        background-color: #FFFFFF; /* Set background color to white */
-        color: #000000; /* Set text color to black */
-        border-radius: 0.375rem;
-        border: 1px solid #ccc;
-        padding: 10px;
-        font-size: 1rem;
-    }
+.form-control {
+    background-color: #FFFFFF; /* Set background color to white */
+    color: #000000; /* Set text color to black */
+    border-radius: 0.375rem;
+    border: 1px solid #ccc;
+    padding: 10px;
+    font-size: 1rem;
+}
 
-    .form-control:focus {
-        border-color: #2B7A78;
-        outline: none;
-    }
+.form-control:focus {
+    border-color: #2B7A78;
+    outline: none;
+}
 
-    .form-check-label {
-        color: #FEFFFF;
-    }
+.form-check-label {
+    color: #FEFFFF;
+}
 
-    .btn-primary {
-        background-color: #2B7A78;
-        color: #FEFFFF;
-        border: none;
-        padding: 10px;
-        font-size: 1.1rem;
-        border-radius: 8px;
-    }
+.btn-primary {
+    background-color: #2B7A78;
+    color: #FEFFFF;
+    border: none;
+    padding: 10px;
+    font-size: 1.1rem;
+    border-radius: 8px;
+}
 
-    .btn-primary:hover {
-        background-color: #17252A;
-        color: #FEFFFF;
-    }
+.btn-primary:hover {
+    background-color: #17252A;
+    color: #FEFFFF;
+}
 
-    .error-message {
-        color: #FF6B6B;
-        font-size: 0.875rem;
-        margin-top: 0.5rem;
-    }
+.error-message {
+    color: #FF6B6B;
+    font-size: 0.875rem;
+    margin-top: 0.5rem;
+}
 
-    .d-flex {
-        display: flex;
-    }
+.d-flex {
+    display: flex;
+}
 
-    .justify-content-end {
-        justify-content: flex-end;
-    }
+.justify-content-end {
+    justify-content: flex-end;
+}
 
-    .mt-4 {
-        margin-top: 1.5rem;
-    }
+.mt-4 {
+    margin-top: 1.5rem;
+}
 
-    .mb-3 {
-        margin-bottom: 1rem;
-    }
+.mb-3 {
+    margin-bottom: 1rem;
+}
 
-    .input-group-text i {
-        font-size: 1.2rem;
-    }
+.input-group-text i {
+    font-size: 1.2rem;
+}
+
 </style>
