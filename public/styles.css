@@ -5,14 +5,14 @@
     box-sizing: border-box;
 }
 
-/* Body setup */
+/* Body setup for dark theme */
 body {
     display: flex;
     flex-direction: column;
     min-height: 100vh; /* Make sure the body takes full height */
-    background-color: #3AAFA9; /* Background color */
+    background-color: #121212; /* Dark background */
     font-family: Arial, sans-serif;
-    color: #FEFFFF; /* Default text color - white */
+    color: #E0E0E0; /* Lighter text for contrast */
     line-height: 1.6;
 }
 
@@ -25,17 +25,17 @@ body.loaded {
 .header {
     text-align: center;
     padding: 20px;
-    background-color: #2B7A78; /* Header color */
+    background-color: #1F1F1F; /* Darker tone for the header */
 }
 
 .header h1 {
-    color: #FEFFFF; /* White text */
+    color: #E0E0E0; /* Lighter text */
     font-size: 2.5em;
 }
 
 /* Navbar */
 .navbar {
-    background-color: #2B7A78; /* Navbar color */
+    background-color: #2C2C2C; /* Slightly lighter dark color for the navbar */
     padding: 10px 0;
     text-align: center;
 }
@@ -50,7 +50,7 @@ body.loaded {
 }
 
 .navbar a {
-    color: #FEFFFF; /* White text */
+    color: #E0E0E0; /* Lighter text */
     text-decoration: none;
     font-size: 1.2em;
     transition: all 0.3s ease; /* Smooth transition for hover */
@@ -58,8 +58,8 @@ body.loaded {
 
 /* Hover effects with contrasting colors */
 .navbar a:hover {
-    color: #17252A; /* Dark contrasting color for text */
-    background-color: #FEFFFF; /* Light background on hover */
+    color: #121212; /* Dark text on hover */
+    background-color: #E0E0E0; /* Light background on hover */
     padding: 5px 10px; /* Adding padding for a button effect */
     border-radius: 5px; /* Slight rounding of the corners */
 }
@@ -69,24 +69,60 @@ body.loaded {
     margin-top: auto; /* Pushes the footer to the bottom */
     text-align: center;
     padding: 20px;
-    background-color: #2B7A78; /* Footer color */
+    background-color: #1F1F1F; /* Dark footer background */
     border-radius: 10px;
 }
 
 .footer p {
-    color: #FEFFFF; /* White text */
+    color: #E0E0E0; /* Lighter text */
     font-size: 1em;
 }
-
-/* Home page text */
+/* Centering the content horizontally and vertically */
 .home-page-text {
-    color: #FEFFFF; /* Set text color to white */
     display: flex;
-    align-items: center;  /* Vertically center */
-    justify-content: center;  /* Horizontally center */
-    flex: 1;  /* Take up the available space */
-    text-align: center; /* Centers the text horizontally */
-    font-size: 2rem; /* Adjust font size */
+    align-items: center; /* Vertically center the items */
+    justify-content: center; /* Horizontally center the items */
+    flex: 1; /* Take up available space */
+    height: 80vh; /* 80% of the viewport height */
 }
 
+/* Image styling to make it bigger */
+.home-page-text img {
+    width: 300px; /* Larger image */
+    height: auto;
+    margin-right: 30px; /* Increased spacing between the image and text */
+}
+/* Description box styled with flexible height */
+.description-box {
+    background-color: #1D1D1D; /* Dark background matching the theme */
+    color: #E0E0E0; /* Light text color */
+    padding: 40px; /* Increased padding for more space inside the box */
+    border-radius: 15px;
+    font-size: 20px; /* Larger text */
+    width: 500px; /* Set the width of the box */
+    max-width: 80%; /* Limit the width to 80% of the viewport to maintain responsiveness */
+    min-height: 250px; /* Minimum height to ensure some space */
+    height: auto; /* Height adjusts based on content */
+    display: flex;
+    justify-content: center;
+    align-items: flex-start; /* Aligns text to the top */
+    text-align: center; /* Center the text inside the box */
+    overflow: hidden; /* Ensure text doesn't overflow outside */
+    font-family: 'Comic Sans MS', cursive, sans-serif; /* Playful font choice */
+    letter-spacing: 1px; /* Slight spacing between letters for a fun look */
+}
 
+/* Paragraph styling inside the box */
+.description-box p {
+    font-weight: bold; /* Bold text to make it stand out */
+    font-size: 18px; /* Slightly smaller text for paragraph */
+    color: #ffffff; /* White text color */
+    line-height: 1.5; /* Line height for readability */
+}
+
+/* App name specific styling */
+.description-box p span {
+    font-size: 28px; /* Larger font for the app name */
+    color: #FF6F61; /* Fun and bright color for "NoteZilla" */
+    font-family: 'Lobster', cursive; /* Fun, more stylish font for the app name */
+}

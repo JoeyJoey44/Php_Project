@@ -4,29 +4,33 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
-    <title>Stunning Website</title>
+    <title>About Page</title>
     <link rel="stylesheet" href="styles.css"> <!-- Importing the CSS file -->
 </head>
 <body>
 
     <header class="header">
-        <h1>PHP Project</h1>
+        <h1>NoteZilla</h1>
     </header>
 
     <nav class="navbar">
         <ul>
             <li><a href="{{ route('welcome.index') }}">Home</a></li>
-            <li><a href="{{ route('features.index') }}">Features</a></li>
             <li><a href="{{ route('about.index') }}">About</a></li>
-            <li><a href="{{ route('faq.index') }}">FAQ</a></li>
             <li><a href="{{ route('users.index') }}">Admin Page</a></li>
-
         </ul>
     </nav>
 
-
     <section class="home-page-text">
-        <h2>About Page</h2>
+        <div class="description-box">
+            <p>
+                This project was made for COMP 3975.
+                <br>
+                <br>
+                - Amal, Dina, James, Joey
+
+            </p>
+        </div>
     </section>
 
     <footer class="footer">

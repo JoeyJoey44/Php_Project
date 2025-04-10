@@ -24,9 +24,7 @@
     <nav class="navbar">
         <ul>
             <li><a href="{{ route('welcome.index') }}">Home</a></li>
-            <li><a href="{{ route('features.index') }}">Features</a></li>
             <li><a href="{{ route('about.index') }}">About</a></li>
-            <li><a href="{{ route('faq.index') }}">FAQ</a></li>
             <li><a href="{{ route('users.index') }}">Admin Page</a></li>
 
         </ul>
